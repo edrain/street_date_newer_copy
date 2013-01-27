@@ -1,0 +1,5 @@
+<% if @artist_in_list == "1" #watching?(@artist_id) %>
+  <%= render 'list_items/view_list_items' %>
+<% else %>
+  <%= render 'list_items/add_list_item' %>
+<% end %>

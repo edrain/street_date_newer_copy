@@ -1,0 +1,29 @@
+<div class="center hero-unit">
+  <div class="row">
+	<div class="search_form">
+	  <table>
+	    <tr>
+		  <td>
+			<h2>Sign in</h2>
+
+			<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  			  <div class="form_label"><%= f.label :email %>
+  			  <%= f.email_field :email %></div>
+
+  			  <div class="form_label"><%= f.label :password %>
+  			  <%= f.password_field :password %></div>
+
+  			  <% if devise_mapping.rememberable? -%>
+    		  <div class="form_label">&nbsp; <%= f.check_box :remember_me %>&nbsp; Remember me</div><br>
+  			  <% end -%>
+
+  			  <div><%= f.submit "Sign in", class: "btn btn-large btn-primary" %></div>
+			<% end %>
+
+			<%= render :partial => "devise/shared/links" %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

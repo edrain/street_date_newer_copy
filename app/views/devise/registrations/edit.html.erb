@@ -1,0 +1,43 @@
+<%= devise_error_messages! %>
+
+<div class="center hero-unit">
+  <div class="row">
+	<div class="search_form">
+	  <table>
+	    <tr>
+		  <td>
+			<h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+
+			  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+ 
+  				<div class="form_label"><%= f.label :email %>
+  				<%= f.email_field :email %></div>
+
+	  			<div class="form_label"><%= f.label :user_name %>
+	  			<%= f.text_field :user_name %></div>
+
+  				<div class="form_label"><%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
+  				<%= f.password_field :password, :autocomplete => "off" %></div>
+
+  				<div class="form_label"><%= f.label :password_confirmation %>
+  				<%= f.password_field :password_confirmation %></div>
+
+  				<div class="form_label"><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
+  				<%= f.password_field :current_password %></div>
+
+	  			<div class="form_label">Share your list? &nbsp;
+	  			<%= f.check_box :shareable %></div>
+				
+  				<div><%= f.submit "Update", class: "btn btn-large btn-primary" %></div>
+			  <% end %>
+
+			<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
+
+			<%= link_to "Back", root_path %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

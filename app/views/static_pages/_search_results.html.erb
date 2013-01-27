@@ -1,0 +1,31 @@
+<div class="center hero-unit">
+  <div class="row">
+    <div class="search_results">
+      <table>	
+	    <% @search.each do |artist| %>
+		  <tr>
+		    <td>
+			  <img src="<%= artist["artistImage"]  %>" 
+					alt="<%= artist["artistName"]  %>">
+			</td>
+			<td>
+			  <br>
+			  <h2>
+			  <a href="<%= artist["artistLinkUrl"] %>" target="_blank">
+					<%= artist["artistName"]  %>
+			  </a>
+			  </h2>
+			</td>
+			<td>
+			  <% if user_signed_in? %>
+			    <%= render :partial => "list_items/add_list_item_form", :locals => { :artist_id => (@artist_id = artist["artistId"]), :artist_in_list => (@artist_in_list = artist["artistInList"]) } %>
+			  <% else %>
+			    <%= button_to "Sign In", new_user_session_path ,:method => "get", class: "btn btn-large" %>
+			  <% end %>	
+			</td>
+		  </tr>
+		<% end %>
+	  </table> 
+	</div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<%= devise_error_messages! %>
+
+<div class="center hero-unit">
+  <div class="row">
+	<div class="search_form">
+	  <table>
+	    <tr>
+		  <td>
+			<h2>Resend confirmation instructions</h2>
+
+			<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
+ 
+  			  <div class="form_label"><%= f.label :email %>
+  			  <%= f.email_field :email %></div>
+
+  			  <div><%= f.submit "Resend", class: "btn btn-large btn-primary" %></div>
+			<% end %>
+
+			<%= render :partial => "devise/shared/links" %>
+
+		  </td>
+	    </tr>
+	  </table>
+    </div>
+  </div>
+</div>

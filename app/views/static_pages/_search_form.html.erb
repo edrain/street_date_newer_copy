@@ -1,0 +1,15 @@
+	<div class="search_form">
+	  <table>	
+        <tr>
+		  <td>
+	      <h2>
+	        Search for an Artist:
+	      </h2>
+	      <%= form_tag(root_path, :method => "get") do %>
+	      <%= text_field_tag(:term,@term) %>
+	      <%= submit_tag "Search", :class => "btn btn-large btn-primary" %>
+	      <% end %>
+		  </td>
+		<tr>
+      </table>
+    </div>
