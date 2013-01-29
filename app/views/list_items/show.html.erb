@@ -1,0 +1,45 @@
+<div class="center hero-unit">
+  <div class="row">
+	<div class="search_results">
+	  <%= link_to "Back to search", root_path %>
+	  <br><br>
+      <% if @list_items != nil %>
+	    <table>
+		  <% @list_items.each do |list_item| %>
+		  <tr>
+		    <td>
+			  <img src="<%= list_item.artist_image %>" 
+						alt="<%= list_item.artist_name %>">
+			</td>
+			<td>
+			  <br>
+			  <h2>
+			    <a href="<%= list_item.artist_url %>" target="_blank">
+				<%= list_item.artist_name  %>
+				</a>
+			  </h2>
+			</td>
+			<td>
+			  <% if list_editable = true and user_signed_in? %>
+				<br>		
+				<%= render :partial => "list_items/delete_list_item", :locals => { :id => (@id = list_item.id) } %>
+			  <% end %>	
+			</td>
+	      <% end %>
+			<tr>
+			  <td colspan=3>
+			    <%= will_paginate @list_items %>
+			  </td>
+	    </table>
+	  <% else %>
+	    <div class="alert alert-notice">
+		  This user has chosen not to share this list.
+	    </div>
+	  <% end %>
+	
+	  <br>
+	  <%= link_to "Back to search", root_path %>
+	  <br>
+	</div>
+  </div>
+</div>

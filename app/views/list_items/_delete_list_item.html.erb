@@ -1,0 +1,6 @@
+<%= form_tag(:controller => "list_items", :action => "destroy", :method => :delete ) do %>
+  <div><%= hidden_field_tag :id, @id %></div>
+  <br>
+ <%= submit_tag "Delete", :confirm => "Are you sure?", class: "btn btn-large" %>
+<% end %>
+
