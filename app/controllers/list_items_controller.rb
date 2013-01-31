@@ -9,7 +9,7 @@ class ListItemsController < ApplicationController
     @list_editable = false
 
     if user_signed_in?
-      if @list_owner.id = current_user.id
+      if @list_owner.id == current_user.id
         @list_editable = true
       else
         @list_editable = false

@@ -11,9 +11,11 @@
 			<td>
 			  <br>
 			  <h2>
-			  <a href="<%= artist["artistLinkUrl"] %>" target="_blank">
+			  <a data-toggle="modal" href="#artist_detail_modal">
 					<%= artist["artistName"]  %>
-			  </a>
+			 </a>
+			  <%= render :partial => "artist_detail_modal", :locals => { :artist_id => (@artist_id = artist["artistId"]), :artist_in_list => (@artist_in_list = artist["artistInList"]), :artist_image => (@artist_image = artist["artistImage"]), :artist_link_url => (@artist_link_url = artist["artistLinkUrl"]), :artist_name => (@artist_name = artist["artistName"]) }%>
+			
 			  </h2>
 			</td>
 			<td>

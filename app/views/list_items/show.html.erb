@@ -20,7 +20,7 @@
 			  </h2>
 			</td>
 			<td>
-			  <% if list_editable = true and user_signed_in? %>
+			  <% if @list_editable == true %>
 				<br>		
 				<%= render :partial => "list_items/delete_list_item", :locals => { :id => (@id = list_item.id) } %>
 			  <% end %>	
