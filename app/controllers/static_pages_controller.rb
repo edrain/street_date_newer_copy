@@ -14,18 +14,13 @@ class StaticPagesController < ApplicationController
       artist["artistImage"] = @image
       
       artist["artistInList"] = "0"       
-      if @list_items != nil
-        @list_items.each do |list_item|
-          if list_item.artist_id == artist["artistId"]
-            artist["artistInList"] = "1"       
-          end
+      @list_items.each do |list_item|
+        if list_item.artist_id == artist["artistId"]
+          artist["artistInList"] = "1"       
         end
       end
     end
     @search.delete_if {|hash| hash["artistImage"] == nil}
-    
-    session["user_return_to"] = request.fullpath
-    
   end
   
   def help

@@ -1,16 +1,16 @@
 StreetDate::Application.routes.draw do
 
-  resources :list_items, only: [:create]
+  resources :list_items, only: [:show, :create, :destroy]
+  #resources :ListItems, only: [:create, :destroy]
 
   devise_for :users
 
-  match '/help',          to: 'static_pages#help'
-  match '/about',         to: 'static_pages#about'
-  match '/contact',       to: 'static_pages#contact'
-  match '/list_items',    to: 'list_items#show'
-  match '/delete',        to: 'list_items#destroy'
+  match '/help',      to: 'static_pages#help'
+  match '/about',     to: 'static_pages#about'
+  match '/contact',   to: 'static_pages#contact'
   
   root to: 'static_pages#home'
+
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

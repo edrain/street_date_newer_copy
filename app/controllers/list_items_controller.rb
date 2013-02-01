@@ -1,7 +1,8 @@
 class ListItemsController < ApplicationController
-  before_filter :authenticate_user!, only: [:create, :destroy]
+  before_filter :authenticate_user!
 
   def show
+<<<<<<< HEAD
     @list_owner = User.find(params[:id])
     
     @list_shareable = @list_owner.shareable
@@ -35,7 +36,11 @@ class ListItemsController < ApplicationController
 
     session["user_return_to"] = request.fullpath          
 
+=======
+    #@list_items = ListItem.find(params[:user_id])
+>>>>>>> parent of 44cee9b... Misc small changes
   end
+
 
   def create
     @list_item = ListItem.new( :user_id => current_user.id, :artist_id => params[:artist_id] )
@@ -48,8 +53,6 @@ class ListItemsController < ApplicationController
   end
   
   def destroy
-    ListItem.find( params[:id] ).destroy
-    redirect_to request.referer
   end
 
 end

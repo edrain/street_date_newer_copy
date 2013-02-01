@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
           return @image    
           
         end
-      end      
+      end
     end
   end  
 end

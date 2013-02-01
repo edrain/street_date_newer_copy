@@ -1,5 +1,6 @@
-<br>
-<%= form_tag url_for(:controller => "list_items", :action => "show"), :method => "get" do %>
-  <div><%= hidden_field_tag :id, current_user.id %></div>
-  <%= submit_tag "View List", class: "btn btn-large" %>
+<%= form_tag(:controller => "list_items", :action => "create", :method => "post") do %>
+  <div><%= hidden_field_tag :user_id, current_user.id %></div>
+  <br>
+ <%= submit_tag "View List", class: "btn btn-large" %>
 <% end %>
+
