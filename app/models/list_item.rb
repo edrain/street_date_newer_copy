@@ -10,8 +10,8 @@
 #
 
 class ListItem < ActiveRecord::Base
-  attr_accessible :user_id, :artist_id, :artist_image, :artist_name, :artist_url
-  attr_accessor :artist_image, :artist_name, :artist_url
+  attr_accessible :user_id, :artist_id, :artist_image, :artist_name, :artist_url, :artist_albums
+  attr_accessor :artist_image, :artist_name, :artist_url, :artist_albums
   
   belongs_to :user
   
@@ -30,6 +30,9 @@ class ListItem < ActiveRecord::Base
     self.artist_url = url
   end
 
+  def add_artist_albums(albums)
+    self.artist_albums = albums
+  end
 end
 
 

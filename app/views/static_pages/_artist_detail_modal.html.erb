@@ -1,7 +1,7 @@
 <div id="artist_detail_modal" class="modal hide fade in" style="display: none; ">  
   <div class="modal-header">  
     <a class="close" data-dismiss="modal">×</a>  
-    <table class="artist_detail_modal">
+    <table>
 	  <tr>	
 	    <td>
 		  <br>
@@ -22,16 +22,28 @@
 		    <%= button_to "Sign In", new_user_session_path ,:method => "get", class: "btn btn-large" %>
 		  <% end %>	
 		</td>
-		
 	</table>
-
-  
-
-</div>  
+  </div>  
 
   <div class="modal-body">  
-    <h4>Start here</h4>  
-    <p>You can add some text here.</p>                
+	<table>
+	  <% @artist_albums.each do |album| %>
+	      <tr>
+		    <td>
+			  <img src="<%= album["artworkUrl100"]  %>" 
+					alt="<%= album["collectionName"]  %>">
+			</td>
+			<td>
+			  <a href="<%= album["collectionViewUrl"] %>" target="_blank">
+		        <%= album["collectionName"] %>
+			  </a>
+			</td>
+			<td>
+			  <br>
+			  <%= button_to "Buy", album["collectionViewUrl"].sub('https','itms'), class: "btn btn-large btn-primary" %>	
+			</td>			
+	  <% end %>	
+	</table>
   </div>  
 
   <div class="modal-footer">  

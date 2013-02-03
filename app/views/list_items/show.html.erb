@@ -14,14 +14,14 @@
 			<td>
 			  <br>
 			  <h2>
-			    <a href="<%= list_item.artist_url %>" target="_blank">
-				<%= list_item.artist_name  %>
+				<a data-toggle="modal" href="#artist_detail_modal">
+						<%= list_item.artist_name %>
 				</a>
+				<%= render :partial => "static_pages/artist_detail_modal", :locals => { :artist_id => (@artist_id = list_item.artist_id), :artist_in_list => (@artist_in_list = "1"), :artist_image => (@artist_image = list_item.artist_image), :artist_link_url => (@artist_link_url = list_item.artist_url), :artist_name => (@artist_name = list_item.artist_name), :artist_albums => (@artist_albums = list_item.artist_albums) }%>
 			  </h2>
 			</td>
 			<td>
-			  <% if @list_editable == true %>
-				<br>		
+			  <% if @list_editable == true %>	
 				<%= render :partial => "list_items/delete_list_item", :locals => { :id => (@id = list_item.id) } %>
 			  <% end %>	
 			</td>

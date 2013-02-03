@@ -24,10 +24,12 @@ class ListItemsController < ApplicationController
       
       @list_items.each do |artist|
         @image = ITunesSearch.lookup_artist_image(:id => artist["artist_id"], :entity => "album")
+        @albums = ITunesSearch.lookup_artist_albums(:id => artist["artist_id"], :entity => "album")
         @artist_info = ITunesSearch.lookup(:id => artist["artist_id"], :entity => "album")
         artist.add_artist_image(@image)
         artist.add_artist_name(@artist_info["artistName"]) 
         artist.add_artist_url(@artist_info["artistLinkUrl"])                
+        artist.add_artist_albums(@albums)                
       end  
     else
       @display_list = false

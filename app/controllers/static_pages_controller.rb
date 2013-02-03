@@ -13,6 +13,9 @@ class StaticPagesController < ApplicationController
       @image = ITunesSearch.lookup_artist_image(:id => artist["artistId"], :entity => "album")
       artist["artistImage"] = @image
       
+      @albums = ITunesSearch.lookup_artist_albums(:id => artist["artistId"], :entity => "album")
+      artist["artistAlbums"] = @albums
+            
       artist["artistInList"] = "0"       
       if @list_items != nil
         @list_items.each do |list_item|

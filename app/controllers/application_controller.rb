@@ -37,7 +37,26 @@ class ApplicationController < ActionController::Base
           return @image    
           
         end
-      end      
+      end
+      
+      def lookup_artist_albums(query={})
+        #It would be nice to combine this with lookup_artist_image
+        if results = get("/wsLookup", :query => query)["results"]
+          results.delete_at(0)
+          results.sort_by! { |a| a["releaseDate"]}.reverse!
+          
+          #@albums = nil
+          
+          @albums = results
+          #results.each do |result|
+          #  @albums = result["artworkUrl100"]
+          #end
+          
+          return @albums    
+          
+        end
+      end  
+          
     end
   end  
 end
