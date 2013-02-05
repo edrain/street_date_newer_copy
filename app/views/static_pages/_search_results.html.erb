@@ -11,7 +11,7 @@
 			<td>
 			  <br>
 			  <h2>
-			  <a data-toggle="modal" href="#artist_detail_modal">
+			  <a data-toggle="modal" href="#artist_detail_modal_<%= artist["artistId"] %>">
 					<%= artist["artistName"]  %>
 			  </a>
 			  <%= render :partial => "artist_detail_modal", :locals => { :artist_id => (@artist_id = artist["artistId"]), :artist_in_list => (@artist_in_list = artist["artistInList"]), :artist_image => (@artist_image = artist["artistImage"]), :artist_link_url => (@artist_link_url = artist["artistLinkUrl"]), :artist_name => (@artist_name = artist["artistName"]), :artist_albums => (@artist_albums = artist["artistAlbums"]) }%>
