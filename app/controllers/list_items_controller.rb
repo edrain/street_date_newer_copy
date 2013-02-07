@@ -20,7 +20,7 @@ class ListItemsController < ApplicationController
     
     if @list_shareable == true or @list_editable == true
       @display_list = true
-      @list_items = ListItem.where(params[:user_id]).paginate(:page => params[:page], :per_page => 10)
+      @list_items = ListItem.where(params[:user_id]).paginate(:page => params[:page], :per_page => 10).order('created_at DESC')
       
       @list_items.each do |artist|
         @image = ITunesSearch.lookup_artist_image(:id => artist["artist_id"], :entity => "album")
@@ -42,16 +42,29 @@ class ListItemsController < ApplicationController
   def create
     @list_item = ListItem.new( :user_id => current_user.id, :artist_id => params[:artist_id] )
 
+    @return_to = request.referer
+
+    @artist_id = params[:artist_id]
+
     if @list_item.save
-      redirect_to request.referer
+      respond_to do |format|
+        format.html { redirect_to @return_to }
+        format.js
+      end
     else
-      redirect_to request.referer
+      redirect_to @return_to
     end
   end
   
   def destroy
     ListItem.find( params[:id] ).destroy
-    redirect_to request.referer
+      
+    @id = params[:id]  
+      
+    respond_to do |format|
+      format.html { redirect_to request.referer }
+      format.js
+    end    
   end
 
 end

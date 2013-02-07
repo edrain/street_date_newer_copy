@@ -1,13 +1,23 @@
 <div class="center hero-unit">
   <div class="row">
 	<div class="search_results">
+	
+	<div id="div_div_div">	
+		Test
+	</div>
+			
 	  <%= link_to "Back to search", root_path %>
 	  <br><br>
       <% if @list_items != nil %>
 	    <table>
 		  <% @list_items.each do |list_item| %>
+
+		  <div id="list_item_<%= list_item.id %>">
 		  <tr>
 		    <td>
+
+			<%= list_item.id %>
+
 			  <img src="<%= list_item.artist_image %>" 
 						alt="<%= list_item.artist_name %>">
 			</td>
@@ -25,6 +35,8 @@
 				<%= render :partial => "list_items/delete_list_item", :locals => { :id => (@id = list_item.id) } %>
 			  <% end %>	
 			</td>
+		  </div>
+
 	      <% end %>
 			<tr>
 			  <td colspan=3>

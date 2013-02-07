@@ -1,4 +1,4 @@
-<div id="artist_detail_modal_<%= @artist_id %>" class="modal hide fade in" style="display: none; ">  
+<div id="artist_detail_modal_<%= @artist_id %>" class="modal hide" style="display: none; ">  
   <div class="modal-header">  
     <a class="close" data-dismiss="modal">×</a>  
     <table>
@@ -17,7 +17,7 @@
 		</td>	
 		<td>
 		  <% if user_signed_in? %>
-		    <%= render :partial => "list_items/add_list_item_form", :locals => { :artist_id => @artist_id, :artist_in_list => @artist_in_list } %>
+		    <%= render :partial => "list_items/add_list_item_form", :locals => { :artist_id => @artist_id, :artist_in_list => @artist_in_list, :view_mode => (@view_mode = "modal") } %>
 		  <% else %>
 		    <%= button_to "Sign In", new_user_session_path ,:method => "get", class: "btn btn-large" %>
 		  <% end %>	

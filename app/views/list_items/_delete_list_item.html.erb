@@ -4,3 +4,4 @@
  <%= submit_tag "Delete", class: "btn btn-large" %>
 <% end %>
 
+<%= button_to "Delete!", { :controller => "list_items", :action => "destroy", :id => @id }, :method => :delete, :remote => true, class: "btn btn-large" %>

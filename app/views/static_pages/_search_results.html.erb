@@ -20,7 +20,7 @@
 			</td>
 			<td>
 			  <% if user_signed_in? %>
-			    <%= render :partial => "list_items/add_list_item_form", :locals => { :artist_id => (@artist_id = artist["artistId"]), :artist_in_list => (@artist_in_list = artist["artistInList"]) } %>
+			    <%= render :partial => "list_items/add_list_item_form", :locals => { :artist_id => (@artist_id = artist["artistId"]), :artist_in_list => (@artist_in_list = artist["artistInList"]), :view_mode => (@view_mode = "inline") } %>
 			  <% else %>
 			    <%= button_to "Sign In", new_user_session_path ,:method => "get", class: "btn btn-large" %>
 			  <% end %>	
