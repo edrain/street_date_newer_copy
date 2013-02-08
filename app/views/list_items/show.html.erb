@@ -1,21 +1,15 @@
 <div class="center hero-unit">
   <div class="row">
 	<div class="search_results">
-	
-	<div id="div_div_div">	
-		Test
-	</div>
-			
+
 	  <%= link_to "Back to search", root_path %>
 	  <br><br>
       <% if @list_items != nil %>
 	    <table>
 		  <% @list_items.each do |list_item| %>
-
-		  <div id="list_item_<%= list_item.id %>">
-			<%= render :partial => "display_list_item", :locals => { :artist_id => (@artist_id = list_item.artist_id), :artist_in_list => (@artist_in_list = "1"), :artist_image => (@artist_image = list_item.artist_image), :artist_link_url => (@artist_link_url = list_item.artist_url), :artist_name => (@artist_name = list_item.artist_name), :artist_albums => (@artist_albums = list_item.artist_albums), :id => (@id = list_item.id), :list_editable => (@list_editable) }%>
-		  </div>
-
+		    <tr id="list_item_<%= list_item.id %>">
+			  <%= render :partial => "display_list_item", :locals => { :artist_id => (@artist_id = list_item.artist_id), :artist_in_list => (@artist_in_list = "1"), :artist_image => (@artist_image = list_item.artist_image), :artist_link_url => (@artist_link_url = list_item.artist_url), :artist_name => (@artist_name = list_item.artist_name), :artist_albums => (@artist_albums = list_item.artist_albums), :id => (@id = list_item.id), :list_editable => (@list_editable) }%>
+		    </tr>
 	      <% end %>
 			<tr>
 			  <td colspan=3>
@@ -26,8 +20,7 @@
 	    <div class="alert alert-notice">
 		  This user has chosen not to share this list.
 	    </div>
-	  <% end %>
-	
+	  <% end %>	
 	  <br>
 	  <%= link_to "Back to search", root_path %>
 	  <br>

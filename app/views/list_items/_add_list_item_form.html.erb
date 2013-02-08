@@ -1,6 +1,8 @@
 <div id="add_list_form_<%= @view_mode %>_<%= @artist_id %>">
-  <% if @artist_in_list == "1" %>	
-    <%= render 'list_items/view_list_items' %>
+  <% if @artist_in_list == "1" %>
+  	<% if @modal != true %>
+    	<%= render 'list_items/view_list_items' %>
+	<% end %>
   <% else %>
     <%= render 'list_items/add_list_item' %>
   <% end %>

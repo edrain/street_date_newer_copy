@@ -30,6 +30,7 @@
 	  <% @artist_albums.each do |album| %>
 	      <tr>
 		    <td>
+			<%= @modal %>
 			  <img src="<%= album["artworkUrl100"]  %>" 
 					alt="<%= album["collectionName"]  %>">
 			</td>

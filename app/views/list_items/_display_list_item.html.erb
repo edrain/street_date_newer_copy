@@ -1,21 +1,19 @@
-<tr>
-  <td>
-	list_item_<%= @id %>
-	
-    <img src="<%= @artist_image %>" 
+<td>
+  <img src="<%= @artist_image %>" 
 				alt="<%= @artist_name %>">
-  </td>
-  <td>
-    <br>
-	  <h2>
-		<a data-toggle="modal" href="#artist_detail_modal_<%= @artist_id %>">
-				<%= @artist_name %>
-		</a>
-		<%= render :partial => "static_pages/artist_detail_modal", :locals => { :artist_id => @artist_id, :artist_in_list => @artist_in_list, :artist_image => @artist_image, :artist_link_url => @artist_link_url, :artist_name => @artist_name, :artist_albums => @artist_albums }%>
-	  </h2>
-  </td>
-  <td>
-    <% if @list_editable == true %>	
-      <%= render :partial => "list_items/delete_list_item", :locals => { :id => (@id) } %>
-    <% end %>	
-  </td>
+</td>
+<td>
+  <br>
+  <h2>
+	<a data-toggle="modal" href="#artist_detail_modal_<%= @artist_id %>">
+	  <%= @artist_name %>
+	</a>
+	<%= render :partial => "static_pages/artist_detail_modal", :locals => { :artist_id => @artist_id, :artist_in_list => @artist_in_list, :artist_image => @artist_image, :artist_link_url => @artist_link_url, :artist_name => @artist_name, :artist_albums => @artist_albums, :modal => (@modal = true) }%>
+  </h2>
+</td>
+<td>
+  <% if @list_editable == true %>	
+    <%= render :partial => "list_items/delete_list_item", :locals => { :id => (@id) } %>
+  <% end %>	
+</td>
+
