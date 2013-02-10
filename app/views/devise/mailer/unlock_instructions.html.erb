@@ -1,7 +1,31 @@
-<p>Hello <%= @resource.email %>!</p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Street Date</title>
+    <%= stylesheet_link_tag    "application", media: "all" %>
+	<%= render 'layouts/shim' %>
+  </head>
+  <body>
 
-<p>Your account has been locked due to an excessive amount of unsuccessful sign in attempts.</p>
 
-<p>Click the link below to unlock your account:</p>
+    <%= render 'layouts/email_header' %>
+	<div class="container">
+      <div class="center hero-unit">
+        <div class="row">
 
-<p><%= link_to 'Unlock my account', unlock_url(@resource, :unlock_token => @resource.unlock_token) %></p>
+		  <p>Hello <%= @resource.email %>!</p>
+
+		  <p>Your account has been locked due to an excessive amount of unsuccessful sign in attempts.</p>
+
+		  <p>Click the link below to unlock your account:</p>
+
+		  <p><%= link_to 'Unlock my account', unlock_url(@resource, :unlock_token => @resource.unlock_token) %></p>
+
+	    </div>
+      </div>
+
+      <%= render 'layouts/email_footer' %>
+    </div>
+  </body>
+</html>
+

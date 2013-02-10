@@ -1,5 +1,28 @@
-<p>Welcome <%= @resource.email %>!</p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Street Date</title>
+    <%= stylesheet_link_tag    "application", media: "all" %>
+	<%= render 'layouts/shim' %>
+  </head>
+  <body>
 
-<p>You can confirm your account email through the link below:</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+    <%= render 'layouts/email_header' %>
+	<div class="container">
+      <div class="center hero-unit">
+        <div class="row">
+	
+          <p>Welcome <%= @resource.email %>!</p>
+
+         <p>You can confirm your account email through the link below:</p>
+
+         <p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+
+        </div>
+      </div>
+
+      <%= render 'layouts/email_footer' %>
+    </div>
+  </body>
+</html>
