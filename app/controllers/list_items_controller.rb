@@ -20,10 +20,12 @@ class ListItemsController < ApplicationController
     
     if @list_shareable == true or @list_editable == true
       @display_list = true
-      @list_items = ListItem.where(params[:user_id]).paginate(:page => params[:page], :per_page => 10).order('created_at DESC')
+      #@list_items = ListItem.where(params[:user_id]).paginate(:page => params[:page], :per_page => 10).order('created_at DESC')
+      #Post.where(:published => true).paginate(:page => params[:page]).order('id DESC')
+      @list_items = ListItem.where(:user_id => params[:id]).paginate(:page => params[:page], :per_page => 10).order('created_at DESC')
       
       @list_items.each do |artist|
-        @image = ITunesSearch.lookup_artist_image(:id => artist["artist_id"], :entity => "album")
+        @image = ITunesSearch.lookup_artist_image(:id => artist["artist_id"], :entity => "album", :limit => "1", :sort => "recent")
         @albums = ITunesSearch.lookup_artist_albums(:id => artist["artist_id"], :entity => "album")
         @artist_info = ITunesSearch.lookup(:id => artist["artist_id"], :entity => "album")
         artist.add_artist_image(@image)

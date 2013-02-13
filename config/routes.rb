@@ -8,6 +8,7 @@ StreetDate::Application.routes.draw do
   match '/about',         to: 'static_pages#about'
   match '/contact',       to: 'static_pages#contact'
   match '/list_items',    to: 'list_items#show'
+  match '/releases',      to: 'releases#show'
   match '/delete',        to: 'list_items#destroy'
   
   root to: 'static_pages#home'
