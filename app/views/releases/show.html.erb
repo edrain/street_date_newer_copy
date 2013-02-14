@@ -8,3 +8,15 @@ Today: <%= @today %>
 <br>
 <%= @artists %>
 <br>
+<% @artist_users.each do |artist_user| %>
+	<%= artist_user.user_id %>
+	<%= artist_user.artist_id %>
+<% end %>
+<br>
+<% @users.each do |user| %>
+	<%= user.id %>
+	<%= user.email %>
+	<%= user.artist_id %>
+<% end %>
+
+
