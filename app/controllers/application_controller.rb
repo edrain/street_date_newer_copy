@@ -62,10 +62,11 @@ class ApplicationController < ActionController::Base
           #@image = nil
           
           results.each do |result|
-            @release_date = result["releaseDate"]
+            @result = result
           end
                             
-          return @release_date    
+          #return @release_date    
+          return @result    
           
         end
       end

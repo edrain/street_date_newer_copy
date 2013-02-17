@@ -1,22 +1,41 @@
-<% @list_items.each do |list_item| %>
-	<%= list_item.artist_id %>
-<% end %>
-<br>
-Release: <%= @release %>
-<br>
-Today: <%= @today %>
-<br>
-<%= @artists %>
-<br>
-<% @artist_users.each do |artist_user| %>
-	<%= artist_user.user_id %>
-	<%= artist_user.artist_id %>
-<% end %>
-<br>
-<% @users.each do |user| %>
-	<%= user.id %>
-	<%= user.email %>
-	<%= user.artist_id %>
-<% end %>
+<div class="center hero-unit">
+  <div class="row">
+    <div class="search_results">
+	<h2>Releases for today: <%= @today %></h2>
+	  <table>
+  		<% user_id = 0 %>
+  		<% @users.each do |user| %>
+		  <% if user_id != user.id %>
+	  		<tr>
+	    	  <td colspan=3>
+		  	    <h3>Email to <%= user.user_name %> (<%= user.email %>) </h3>	
+			  </td>
+	  		</tr>
 
-
+	  		<% user_id = user.id %>
+		  <% end %>
+	
+	  		<tr>
+			  <td>
+		  		<img src="<%= user.album_image  %>" 
+		  	alt="<%= user.artist_name  %>">
+			  </td>
+			  <td>
+		  		<a href="<%= user.web_url %>" target="_blank">
+		  		<h2>
+		    	  <%= user.album_name %>
+			      <br>
+				  <%= user.artist_name %>
+		  		</h2>
+		  		</a>
+			  </td>
+			 
+			  <td>
+				<%= button_to "Buy", user.itunes_url, class: "btn btn-large btn-primary" %>		
+			  </td>
+			</tr>
+		<% end %>
+	  </table>
+	</div>
+  </div>
+</div>
