@@ -2,6 +2,9 @@
   <div class="row">
     <div class="search_results">
 	<h2>Releases for today: <%= @today %></h2>
+
+	<%= render :partial => "notify_form" %>
+
 	  <table>
   		<% user_id = 0 %>
   		<% @users.each do |user| %>
@@ -21,13 +24,13 @@
 		  	alt="<%= user.artist_name  %>">
 			  </td>
 			  <td>
-		  		<a href="<%= user.web_url %>" target="_blank">
 		  		<h2>
-		    	  <%= user.album_name %>
-			      <br>
-				  <%= user.artist_name %>
-		  		</h2>
-		  		</a>
+				  <a href="<%= user.web_url %>" target="_blank">
+		  		    <%= user.album_name %>
+			        <br>
+				    <%= user.artist_name %>
+		  		  </a>
+				</h2>
 			  </td>
 			 
 			  <td>
@@ -35,6 +38,7 @@
 			  </td>
 			</tr>
 		<% end %>
+		</tr>
 	  </table>
 	</div>
   </div>

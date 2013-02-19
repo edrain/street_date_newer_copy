@@ -4,7 +4,7 @@ class ReleasesController < ApplicationController
     @list_items = ListItem.select("DISTINCT artist_id") #.where("id IS NOT NULL")
     
 #adjust this, obviously
-  	@today = Date.today-4   #.to_s
+  	@today = Date.today-6   #.to_s
 
     #Get most recent release for each artist       
     @list_items.each do |list_item|
@@ -54,9 +54,31 @@ class ReleasesController < ApplicationController
           user["album_image"] = release.album_image
         	user["web_url"] = release.web_url
         	user["itunes_url"] = release.itunes_url
+        	user["today"] = @today
         end
       end
-    end   
+    end  
+    
+    return @users
                
-  end  
+  end
+  
+  
+  def notify
+    show  
+    
+    user_id = 0
+  	@users.each do |user|
+		  if user_id != user.id 
+		    user_id = user.id
+		    @user = @users.select { |user| user.id == user_id }
+		    ReleaseNotifier.notify(@user).deliver       
+		  end  
+		end    
+    
+    #ReleaseNotifier.notify(@users).deliver       
+    
+    redirect_to request.referer 
+  end
+    
 end

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Street Date</title>
+    <%= stylesheet_link_tag    "application", media: "all" %>
+	<%= render 'layouts/shim' %>
+  </head>
+  <body>
+	
+    <%= render 'layouts/email_header' %>
+    
+  	  <div class="center hero-unit">
+        <div class="row" align="center">
+		  <table>
+		    <tr>
+			  <td colspan=3>	
+		 	    
+		  		
+			<% @user.each do |user| %>
+			  <tr>
+			    <td>
+				  <img src="<%= user.album_image  %>" 
+				  	alt="<%= user.artist_name  %>">
+				</td>
+				<td>
+				  <h2>
+				    <a href="<%= user.web_url %>" target="_blank">
+				      <%= user.album_name %>
+					  <br>
+					  <%= user.artist_name %>
+				    </a>
+				  </h2>
+				</td>
+				<td>
+				  <%= button_to "Buy", user.itunes_url, class: "btn btn-large btn-primary" %>		
+				</td>
+			  </tr>
+			<% end %>
+		  </table>
+        </div>
+      </div>
+
+      <%= render 'layouts/email_footer' %>
+  </body>
+</html>

@@ -15,6 +15,11 @@ gem 'bootstrap-will_paginate'
 gem 'premailer-rails3'
 gem 'nokogiri'
 
+# Mailer stuff
+gem 'resque'
+gem 'resque_mailer'
+gem 'resque-scheduler'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
