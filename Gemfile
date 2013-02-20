@@ -5,21 +5,24 @@ gem 'rails', '3.2.11'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+# Authentication / Authorization
 gem 'devise'
 gem 'cancan'
+
+# Layout stuff
 gem 'httparty'
 gem 'twitter-bootstrap-rails'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 
+# Mailer layout
 gem 'premailer-rails3'
 gem 'nokogiri'
 
-# Mailer stuff
+# Mail schedule stuff
 gem 'resque'
-gem 'resque_mailer'
-gem 'resque-scheduler'
+# gem 'resque_mailer'
+# gem 'resque-scheduler'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -35,8 +38,8 @@ end
 
 gem 'jquery-rails'
 
-
 group :development do
+  gem 'sqlite3'
   gem 'mailcatcher'
   gem 'annotate', '2.5.0'
 end
