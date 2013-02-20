@@ -6,4 +6,8 @@ class ReleaseNotifier < ActionMailer::Base
     mail to: user[0].email, subject: "You have new albums out today!"
   end
 
+  def admin_notify(today)
+    @today = today
+    mail to: 'eli@streetdate.info', subject: "Release notifications sent"    
+  end  
 end

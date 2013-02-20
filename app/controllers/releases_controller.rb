@@ -1,10 +1,13 @@
 class ReleasesController < ApplicationController
+  
   def show
+    authorize! :manage, @releases
+    
     #Get all artists from DB
     @list_items = ListItem.select("DISTINCT artist_id") #.where("id IS NOT NULL")
     
 #adjust this, obviously
-  	@today = Date.today-6   #.to_s
+  	@today = Date.today-7   #.to_s
 
     #Get most recent release for each artist       
     @list_items.each do |list_item|
@@ -65,6 +68,8 @@ class ReleasesController < ApplicationController
   
   
   def notify
+    authorize! :manage, @releases
+    
     show  
     
     user_id = 0
@@ -76,7 +81,7 @@ class ReleasesController < ApplicationController
 		  end  
 		end    
     
-    #ReleaseNotifier.notify(@users).deliver       
+    ReleaseNotifier.admin_notify(@today).deliver       
     
     redirect_to request.referer 
   end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130122005209) do
+ActiveRecord::Schema.define(:version => 20130219230557) do
 
   create_table "list_items", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20130122005209) do
     t.datetime "confirmation_sent_at"
     t.string   "user_name",                                 :null => false
     t.boolean  "shareable",              :default => false, :null => false
+    t.boolean  "is_admin",               :default => false, :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

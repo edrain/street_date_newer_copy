@@ -32,7 +32,9 @@
 				  </h2>
 				</td>
 				<td>
-				  <%= button_to "Buy", user.itunes_url, class: "btn btn-large btn-primary" %>		
+				  <form method="link" action="<%= user.itunes_url %>">
+					<input type="submit" value="Buy" class="btn btn-large btn-primary">
+				  </form>	
 				</td>
 			  </tr>
 			<% end %>

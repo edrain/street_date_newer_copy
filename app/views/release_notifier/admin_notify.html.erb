@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Street Date</title>
+    <%= stylesheet_link_tag    "application", media: "all" %>
+	<%= render 'layouts/shim' %>
+  </head>
+  <body>
+	
+    <%= render 'layouts/email_header' %>
+    
+  	  <div class="center hero-unit">
+        <div class="row" align="center">
+		  <table>
+		    <tr>
+			  <td colspan=3>	
+		 	    <h2>
+				  Releases for <%= @today %> sent.
+				</h2>
+		  </table>
+        </div>
+      </div>
+
+      <%= render 'layouts/email_footer' %>
+  </body>
+</html>
