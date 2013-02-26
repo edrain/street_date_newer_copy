@@ -1,0 +1,9 @@
+notification_schedule:
+  cron:  "0 9 * * *"  
+  class: Releases
+  queue: high
+  args:  notify
+  description: ""
+
+  
+  
