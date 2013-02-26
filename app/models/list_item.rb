@@ -33,6 +33,7 @@ class ListItem < ActiveRecord::Base
   def add_artist_albums(albums)
     self.artist_albums = albums
   end
+  
 end
 
 
