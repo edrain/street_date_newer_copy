@@ -21,10 +21,8 @@ gem 'nokogiri'
 
 # Mail schedule stuff
 gem 'resque'
-gem 'resque-scheduler'
 # gem 'resque_mailer'
-gem 'whenever', :require => false
-
+# gem 'resque-scheduler'
 
 # Gems used only for assets and not required
 # in production environments by default.
