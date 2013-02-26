@@ -7,7 +7,7 @@ class ReleasesController < ApplicationController
     @list_items = ListItem.select("DISTINCT artist_id") #.where("id IS NOT NULL")
     
 #adjust this, obviously
-  	@today = Date.today-12   #.to_s
+  	@today = Date.today-7   #.to_s
 
     #Get most recent release for each artist       
     @list_items.each do |list_item|
@@ -85,18 +85,5 @@ class ReleasesController < ApplicationController
     
     redirect_to request.referer 
   end
-  
-  def notify_enqueue
-    authorize! :manage, @releases
-        
-    require "enqueue"
-
-    Resque.enqueue(Enqueue)
     
-    redirect_to request.referer 
-  end
-  
 end
-
-
-
